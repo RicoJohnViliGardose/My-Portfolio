@@ -1,0 +1,47 @@
+
+/*TODO: animation.css — entrance & scroll-reveal animations */
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/*TODO: hero card entrance — plays immediately on load */
+.animate-fade-in {
+    animation: fadeInUp 0.8s ease both;
+}
+
+/*TODO: scroll-triggered reveals — animation.js toggles ".visible" */
+.fade-in,
+.fade-in-left,
+.fade-in-right {
+    opacity: 0;
+}
+
+.fade-in.visible {
+    animation: fadeInUp 0.7s ease forwards;
+}
+
+.fade-in-left.visible {
+    animation: fadeInLeft 0.7s ease forwards;
+}
+
+.fade-in-right.visible {
+    animation: fadeInRight 0.7s ease forwards;
+}

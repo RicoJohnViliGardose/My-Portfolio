@@ -1,0 +1,25 @@
+/* TODO:
+   variable.css — design tokens used across the site*/
+:root {
+    --color-primary: #a78bfa;   
+    --color-secondary: #22d3ee;    
+    --color-primary-soft: rgba(167, 139, 250, 0.12);
+    --color-secondary-soft: rgba(34, 211, 238, 0.12);
+
+    --bg-panel: rgba(30, 41, 59, 0.5);   
+    --bg-panel-solid: rgba(15, 23, 42, 0.6); 
+    --border-soft: rgba(51, 65, 85, 0.5); 
+
+    --text-main: #e2e8f0;  
+    --text-muted: #94a3b8;  
+
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+
+    --meter-size: 82px;
+    --meter-radius: 35;
+    --meter-circumference: 219.9;
+
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.7s ease-in-out;
+}

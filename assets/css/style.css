@@ -1,0 +1,414 @@
+/* TODO: 
+   style.css — custom component styles
+   (Tailwind CDN handles utility classes; this file
+   only covers the custom classes referenced in the HTML*/
+
+/*TODO: generic text helpers */
+.eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+}
+
+/* TODO: home hero photo: frameless, floats over the dark background */
+.profile-photo-hero {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
+
+.profile-photo-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.45));
+}
+
+/*TODO: profile card Home */
+.profile-card {
+    background: var(--bg-panel);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+}
+
+.profile-photo-wrap {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-soft);
+    aspect-ratio: 1 / 1;
+}
+
+.profile-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* TODO: buttons / icons */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.25rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    color: #0f172a;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -10px var(--color-primary);
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border-soft);
+    color: var(--text-muted);
+    transition: color var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
+}
+
+.social-icon:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* TODO:  circular meters Special Skills */
+.meter {
+    position: relative;
+    width: var(--meter-size);
+    height: var(--meter-size);
+}
+
+.meter svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.meter .track {
+    fill: none;
+    stroke: rgba(148, 163, 184, 0.15);
+    stroke-width: 6;
+}
+
+.meter .fill {
+    fill: none;
+    stroke: url(#meterGradient);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: var(--meter-circumference);
+    stroke-dashoffset: var(--meter-circumference);
+    transition: stroke-dashoffset 1.2s ease-out;
+}
+
+.meter.in-view .fill {
+    stroke-dashoffset: calc(var(--meter-circumference) - (var(--meter-circumference) * var(--pct) / 100));
+}
+
+.meter .label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* TODO: tools & workflow carousel */
+#toolsViewport {
+    padding: 0.25rem 0;
+}
+
+.expertise-card {
+    background: var(--bg-panel-solid);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.expertise-card .tool-name {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.expertise-bar {
+    margin-top: 0.75rem;
+    height: 6px;
+    border-radius: 9999px;
+    background: rgba(148, 163, 184, 0.15);
+    overflow: hidden;
+}
+
+.expertise-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    transition: width 1.2s ease-out;
+}
+
+.expertise-card.in-view .expertise-fill {
+    width: var(--fillpct);
+}
+
+.expertise-pct {
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+/* TODO: resume-style tabs (now nested in About Me) */
+.resume-tab-btn {
+    transition: background var(--transition-base), color var(--transition-base);
+}
+
+.resume-tab-panel {
+    animation: fadeIn 0.4s ease;
+}
+
+/* TODO: skills bars Skills tab */
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    border-radius: 9999px;
+    background: rgba(148, 163, 184, 0.15);
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    transition: width 1.2s ease-out;
+}
+
+/* TODO: timeline Experience / Education tabs */
+.timeline {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--border-soft);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.75rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -1.94rem;
+    top: 0.3rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: var(--text-muted);
+}
+
+.timeline-item.current::before {
+    background: var(--color-secondary);
+    box-shadow: 0 0 0 4px var(--color-secondary-soft);
+}
+
+.status-chip {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.1rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--color-secondary-soft);
+    color: var(--color-secondary);
+}
+
+/* TODO:  project cards */
+.project-card {
+    background: var(--bg-panel-solid);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-card.border-dashed {
+    border-style: dashed;
+}
+
+.project-tag {
+    display: inline-block;
+    margin-right: 0.4rem;
+    margin-bottom: 0.75rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+
+/* TODO:  contact form  */
+.input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.6rem;
+    background: var(--bg-panel-solid);
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+    outline: none;
+    transition: border-color var(--transition-base);
+}
+
+.input-field:focus {
+    border-color: var(--color-primary);
+}
+
+.contact-card {
+    display: block;
+    text-align: center;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    background: var(--bg-panel-solid);
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+    transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+.contact-card:hover {
+    border-color: var(--color-secondary);
+    transform: translateY(-3px);
+}
+
+/* TODO:  toast */
+#toastMsg {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.6rem;
+    background: var(--bg-panel-solid);
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base), transform var(--transition-base);
+    z-index: 100;
+}
+
+#toastMsg.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* TODO: navbar */
+.nav-link {
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color var(--transition-base);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-main);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+#mobileMenu {
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem 1.25rem 1rem;
+    background: rgba(15, 23, 42, 0.95);
+    border-top: 1px solid var(--border-soft);
+}
+
+#mobileMenu.open {
+    display: flex;
+}
+
+#mobileMenu .nav-link {
+    padding: 0.6rem 0;
+}
+
+/* TODO: footer */
+.site-footer {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-soft);
+}
+
+.footer-link {
+    color: var(--text-muted);
+    transition: color var(--transition-base);
+}
+
+.footer-link:hover {
+    color: var(--color-primary);
+}
+
+.back-to-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border-soft);
+    color: var(--text-muted);
+    transition: color var(--transition-base), background var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
+}
+
+.back-to-top:hover {
+    color: #0f172a;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-color: transparent;
+    transform: translateY(-2px);
+}
